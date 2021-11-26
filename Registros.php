@@ -96,7 +96,7 @@ if (!empty($_POST['user']) && !empty($_POST['pass']) && !empty($_POST['email']))
                       <div class="form-group">
                         <div class="col-12">
                           <i class="fa fa-envelope-o "></i> <label for="email">Email</label>
-                          <input type="email" name="email" class="form-control " id="emmail" placeholder="Email" required>
+                          <input type="text" name="email" class="form-control " id="emmail" placeholder="Email" required>
                       </div>
                     </div>
 
