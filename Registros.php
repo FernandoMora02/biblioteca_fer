@@ -1,22 +1,5 @@
 <?php
-require_once 'conexion.php';
 
-$message ='';
-
-if (!empty($_POST['user']) && !empty($_POST['pass']) && !empty($_POST['email'])) {
-  $sql = "INSERT INTO users (user, pass, email) VALUES (:user, :pass, :email)";
-  $stmt = $c->prepare($sql);
-  $stmt->bindParam(':user',$_POST['user']);
-  $password = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-  $stmt->bindParam(':pass', $password);
-  $stmt->bindParam(':email',$_POST['email']);
-
-  if ($stmt->execute()) {
-    $message = 'Se ha creado un usuario exitosamente';
-  }else {
-    $message = 'lo siento ha ocurrido un error creando su contrasena ';
-  }
-}
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +23,7 @@ if (!empty($_POST['user']) && !empty($_POST['pass']) && !empty($_POST['email']))
       <div class="container-fluid " >
       
         <a class="navbar-brand fs-5" href="index.html"> 
-          <img src="" alt="">
+          <img src="imagenes/LogoLibro.png" alt="">
         </a>
           
 
@@ -77,46 +60,49 @@ if (!empty($_POST['user']) && !empty($_POST['pass']) && !empty($_POST['email']))
   </header>
 
 <!--LOGIN-->
-<?php if (!empty($message)): ?>
- <p><?= $message?></p>
- <?php endif; ?>
-
 <div class="container mt-5 mb-4">
         <div class="row">
             <div class="col-md-4 offset-md-4">
                 <div class="login-form bg-dark mt-4 p-4 text-white">
-                    <form action="login.php" method="post" class="row g-3">
+
+                    <form action="Req_php/Registros_Usuarios.php" method="POST" class="row g-3">
                         <h4 class="text-center">Create an Account</h4>
 
                         <div class="form-group">
-                          <i class="fa fa-user text-white"></i>  <label for="user">Username</label>
-                          <input type="text" name="user" class="form-control" id="username" placeholder="Username" required>
+                          <i class="fa fa-user text-white"></i>  <label for="user">Nombre Completo</label>
+                          <input type="text" name="nameC" class="form-control" placeholder="name" required>
                         </div>
-                        
+
                       <div class="form-group">
                         <div class="col-12">
                           <i class="fa fa-envelope-o "></i> <label for="email">Email</label>
-                          <input type="text" name="email" class="form-control " id="emmail" placeholder="Email" required>
+                          <input type="text" name="email" class="form-control " placeholder="Email" required>
                       </div>
                     </div>
+
+                    <div class="form-group">
+                          <i class="fa fa-user text-white"></i>  <label for="user">Username</label>
+                          <input type="text" name="user" class="form-control"  placeholder="Username" required>
+                        </div>
 
 
                       <div class="form-group">
                         <div class="col-12">
                           <i class="fa fa-key text-white"></i>    <label for="pass">Password</label>
-                            <input type="password" name="pass" class="form-control" id="password" placeholder="Password" required>
+                            <input type="password" name="pass" class="form-control"  placeholder="Password" required>
                         </div>
                       </div>
                        
                         <div class="col-12 ">
-                            <button type="submit" class="btn btn-dark  text-white float-end">Create Account</button>
+                            <button type="submit" class="btn btn-dark  text-white float-end">Crear Cuenta</button>
                         </div>
 
                      
                     </form>
+
                     <hr class="mt-4">
                     <div class="col-12">
-                        <p class="text-center mb-0">Do you have an account? <a class="st-log"  href="login.html">Login</a></p>
+                        <p class="text-center mb-0">Do you have an account? <a class="st-log"  href="login.php">Login</a></p>
                     </div>
                    
                 </div>

@@ -1,5 +1,4 @@
 <?php
-require_once 'conexion.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +26,7 @@ require_once 'conexion.php';
           
             <a class="navbar-brand fs-5" href="index.html">
              <!--The<span class="text-primary"> Peach</span>--> 
-              <img src="" alt="">
+              <img src="imagenes/LogoLibro.png" alt="">
             </a>
               
     
@@ -65,16 +64,16 @@ require_once 'conexion.php';
     <div class="login-box">
         <img class="avatar" src="imagenes/libro1.jpeg" alt="logo de Fazt">
         <h2>Login</h2>
-        <form>
+        <form action="Req_php/login_user.php" method="POST">
             <div>
                 <label for="Username">Username</label>
-                <input type="text" name="user" id="user" 
+                <input type="text" name="user" id="username" 
                 class="form-control" placeholder="Nombre de Usuario">
                </div>
 
             <div>
                 <label for="password">password</label>
-                <input type="password" name="pass" id="pass"
+                <input type="password" name="pass" id="password"
                      class="form-control " placeholder="Contraseña">
                     </div>
             
@@ -84,7 +83,7 @@ require_once 'conexion.php';
 
            
             <div class="card-footer">
-                <input button class="btn btn-danger" onclick="login();" value="Log In"></button>
+                <input button type="submit" class="btn btn-danger" value="Log In"></button>
                </div>
                     <div class="col-12">
                         <p class="text-center mb-0">¿Aún no tienes cuenta? <a class="st-log" href="Registros.php">Registrate</a></p>
